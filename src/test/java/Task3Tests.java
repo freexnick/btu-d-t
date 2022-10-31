@@ -8,22 +8,17 @@ public class Task3Tests {
 
   @Test
   public void getStatusCode() {
-    given().when().get(URL).then().assertThat().statusCode(200);
+    get(URL).then().assertThat().statusCode(200);
   }
 
   @Test
   public void checkLastBook() {
-    given().when()
-        .get(URL).then()
-        .body("books[-1].isbn", equalTo("9781593277574"));
+    get(URL).then().body("books[-1].isbn", equalTo("9781593277574"));
   }
 
   @Test
   public void checkPageCount() {
-    given().when()
-        .get(URL).then()
-        .body("books[0].pages", equalTo(234),
-            "books[1].pages", equalTo(254));
+    get(URL).then().body("books[0].pages", equalTo(234), "books[1].pages", equalTo(254));
   }
 
 }
